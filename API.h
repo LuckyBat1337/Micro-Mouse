@@ -1,9 +1,9 @@
 /*
  API.h is strict the interface contract required by the Micromouse Simulator.
- This file declares the methods available to the maze-solving algorithm.
+ This file declares the methods available to the maze-solving algorithm. 
  */
 
-#ifndef API_H
+#ifndef API_H 
 #define API_H
 
 #include <Arduino.h> // used for string and bool (ZZ)

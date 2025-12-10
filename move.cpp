@@ -1,8 +1,8 @@
 /*
 DEPRECATED FILE!!! only here for if inspiration is needed for other files
 
-Det behövs för att se till att den ska förflytta sig med hjälp av primitiva funktionen för att få distansen
-Det ska göras genom att undersöka varvtalet i en borstlös ( ZZ ) DC motor. 
+This file is needed to see that it can move with the help of the primitive function to get the distance <-------- OLD! use open-loop to start with, if time fix closed loop as i talk about here
+It should be done by looking at the RPM in a brushless DC motor. <----- PID encoder!!! primitive integral derivative encoder!!!
 */
 
 #include <iostream>

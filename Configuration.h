@@ -1,7 +1,7 @@
 /*
   Configuration.h should be the central repository for system constants, pin definitions, and compile-time flags.
   This file controls the build target (Simulator vs Hardware).
- */
+ */ 
 
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H

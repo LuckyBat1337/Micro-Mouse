@@ -1,4 +1,6 @@
 /*
+DEPRECATED FILE!!! only here for if inspiration is needed for other files
+
 Det behövs för att se till att den ska förflytta sig med hjälp av primitiva funktionen för att få distansen
 Det ska göras genom att undersöka varvtalet i en borstlös ( ZZ ) DC motor. 
 */

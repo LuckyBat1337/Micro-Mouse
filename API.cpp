@@ -7,12 +7,10 @@
   determine which block of code is compiled. This allows the same source files to run on the desktop simulator and the physical ESP32.
  */
 #include "API.h"
-
 // if we are compiling for hardware, we need access to the motor drivers
 #ifndef SIMULATOR_MODE
     #include "Motors.h"
-    #include "Sensors.h" // Assuming this will be created I don't have time right now, will get to it hopefully before christmas? ZZ 
-
+    #include "Sensors.h" // Assuming this will be created I don't have time right now, will get to it hopefully before christmas? ZZ
     // map cell units to millimeters
     const float MM_PER_CELL = 180.0;
 #endif

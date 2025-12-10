@@ -13,5 +13,9 @@ For variables with one word keep it uncapitalized for the entirety (e.g. move() 
 
 For variables with two or more words keep it uncapitalized on the first word, then without spaces capitalize the second so on (e.g. moveRight() or turnLeftOnWallRight() ).
 
-indentation style follows standard procedure for c++ being function name, bracket, new line, code, new line, bracket. (e.g. main(){
-}            ).
+indentation style follows standard procedure for c++ being function name, bracket, new line, code, new line, bracket. 
+(e.g. 
+main(){
+   code:
+} 
+).

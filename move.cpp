@@ -4,13 +4,12 @@ Det ska göras genom att undersöka varvtalet i en borstlös ( ZZ ) DC motor.
 */
 #include <iostream>
 #include <string>
+#include "constantVariables.h"
 
-int x=0;
 string cardinalDirection[4] = {"NORTH", "EAST", "SOUTH", "WEST"};
 string (&curDir)[4] = currentDirection;
 string (&carDir)[4] = cardinalDirection;
 
-string carDir[0] = 
 int main(){
 
 }

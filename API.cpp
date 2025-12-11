@@ -55,9 +55,9 @@ void API::moveForward(int distance) {
     std::cout << "moveForward " << distance << std::endl;
     std::string response;
     std::cin >> response;
-    if (response!= "ack") {
-        std::cerr << "Critical: Move failed (Crash detected)." << std::endl;
-        exit(1);
+    if (response == "crash") {
+        std::cerr << "CRITICAL: mouse crashed!!!!!!" << std::endl;
+        // logic to handle reset or stop?
     }
 }
 

@@ -10,11 +10,19 @@ seems like the easiest way to implement movement, but since time doesn't seem li
 For closed-loop control we would need encoders. A file named "Encoders.cpp" and "Encoders.h" could be created and there is already "attachInterrupt()" that would be used to increment counters,
 not sure how the encoder works, how it changes. Someone should try and find out. Someone should also read more about PID controllers to find out how to implement this. 
 
-INFORMATION FOR BUILD COMMANDS WITH MACORONE MMS!
-You need something called MinGW/g++, download available at: https://sourceforge.net/projects/mingw/
 
+INFORMATION FOR BUILD COMMANDS WITH MACORONE MMS!
+You need a program called MinGW/g++, download available at: https://sourceforge.net/projects/mingw/
+
+Information below taken from the internet:
+"g++: Invokes the GNU C++ compiler."
+"Main.cpp API.cpp: Specifies the translation units to compile"
+"-o micromouse: Names the resulting binary:"
+"-DSIMULATOR_MODE: This is the equivalent of writing #define SIMULATOR_MODE at the top of every file. It activates the simulation blocks in API.h and API.cpp and ensures Arduino.h is ignored."
 
 build command: g++ Main.cpp API.cpp -o micromouse.exe -DSIMULATOR_MODE
+
+
 
 CLOSED LOOP CONTROL!!!:
 For closed loop a formula that looks like "target_ticks = mm * TICKS_PER_MM; while(current_ticks < target_ticks) {... }" 

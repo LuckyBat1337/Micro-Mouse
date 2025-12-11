@@ -1,50 +1,30 @@
-/*
- API.h is strict the interface contract required by the Micromouse Simulator.
- This file declares the methods available to the maze-solving algorithm. 
- */
-
-#ifndef API_H 
-#define API_H
-
-#include <Arduino.h> // used for string and bool (ZZ)
-#include "Configuration.h"
+// API.h
+#pragma once
+#include <string>
 
 class API {
 public:
-    // Navigation commands
-
-    // Returns true if wall exists, false otherwise
+    // Sensing Methods
+    static int mazeWidth();
+    static int mazeHeight();
     static bool wallFront();
     static bool wallRight();
     static bool wallLeft();
     
-    // Movement commands
+    // Movement Methods
     static void moveForward(int distance = 1);
-    static void moveForwardHalf(int distance = 1);
-    
-    // In-place turns
     static void turnRight();
     static void turnLeft();
-
-    // Maze state information 
-    static int mazeWidth();
-    static int mazeHeight();
-
-    // Visualization (simulator only) 
+    
+    // Visualization/Debug Methods
     static void setWall(int x, int y, char direction);
     static void clearWall(int x, int y, char direction);
-    
     static void setColor(int x, int y, char color);
     static void clearColor(int x, int y);
-    static void clearAllColor();
-
-    static void setText(int x, int y, String text);
+    static void setText(int x, int y, const std::string& text);
     static void clearText(int x, int y);
-    static void clearAllText();
-
-    // System control 
+    
+    // State Management
     static bool wasReset();
     static void ackReset();
 };
-
-#endif 

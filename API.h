@@ -13,11 +13,13 @@ public:
 
     static void moveForward(int distance = 1);
     static void moveForwardHalf(int distance = 1);
+
     static void turnRight();
     static void turnLeft();
 
     static void setWall(int x, int y, char direction);
     static void clearWall(int x, int y, char direction);
+
     static void setColor(int x, int y, char color);
     static void clearColor(int x, int y);
     static void clearAllColor();

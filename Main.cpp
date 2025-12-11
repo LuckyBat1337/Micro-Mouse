@@ -1,6 +1,9 @@
-//  This file is "main.cpp", arduino looks for a file with file ending ".ino" which is why it has been renamed to Micromouse.ino (from my understanding)
-//  Wrong again, need to rewrite as Main.cpp again..
-/* #include <Arduino.h> //various things needing inclusion, arduino for string and boolean and such replacing iostream (im not sure about this? ZZ )
+//  This file is "main.cpp", arduino looks for a file with file ending ".ino" which is why it has been renamed 
+//  to Micromouse.ino (from my understanding)
+
+//  Wrong again, need to rewrite file named Main.cpp, this file will be used for hardware builds while Main.cpp is 
+//  used for simulations of code
+#include <Arduino.h> //various things needing inclusion, arduino for string and boolean and such replacing iostream (im not sure about this? ZZ )
 #include "Configuration.h"
 #include "API.h"
 
@@ -42,5 +45,3 @@ void loop(){
                           // |
     }
 }
-*/
-

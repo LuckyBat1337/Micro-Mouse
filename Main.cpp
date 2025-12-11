@@ -1,6 +1,6 @@
 //  This file is "main.cpp", arduino looks for a file with file ending ".ino" which is why it has been renamed to Micromouse.ino (from my understanding)
-
-#include <Arduino.h> //various things needing inclusion, arduino for string and boolean and such replacing iostream (im not sure about this? ZZ )
+//  Wrong again, need to rewrite as Main.cpp again..
+/* #include <Arduino.h> //various things needing inclusion, arduino for string and boolean and such replacing iostream (im not sure about this? ZZ )
 #include "Configuration.h"
 #include "API.h"
 
@@ -14,6 +14,7 @@ void setup(){
      "initializes the ESP32's default hardware serial port (UART0) for communication at a speed of 115,200 bits per second (baud)" 
      https://randomnerdtutorials.com/esp32-uart-communication-serial-arduino/#:~:text=When%20you%20use%20Serial.,UART%201%20and%20UART%202.
 */
+/*
  Serial.begin(115200);
  #ifndef SIMULATOR_MODE
     Motors::init();
@@ -41,3 +42,5 @@ void loop(){
                           // |
     }
 }
+*/
+

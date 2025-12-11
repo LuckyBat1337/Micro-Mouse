@@ -6,15 +6,10 @@
   The preprocessor directives (#ifdef SIMULATOR_MODE, row 14 right now dont forget to change what row im refering to end of project ZZ ) 
   determine which block of code is compiled. This allows the same source files to run on the desktop simulator and the physical ESP32.
  */
-// API.cpp
 #include "API.h"
 #include <iostream>
 #include <string>
-#include <cstdlib> // for exit()
-
-// Helper to handle the request-response cycle
-// Blocks until simulator responds.
-// Uses std::cin >> response which skips whitespace automatically.
+#include <cstdlib>
 
 int API::mazeWidth() {
     std::cout << "mazeWidth" << std::endl;
@@ -34,30 +29,47 @@ bool API::wallFront() {
     std::cout << "wallFront" << std::endl;
     std::string response;
     std::cin >> response;
-    return (response == "true");
+    return response == "true";
 }
 
 bool API::wallRight() {
     std::cout << "wallRight" << std::endl;
     std::string response;
     std::cin >> response;
-    return (response == "true");
+    return response == "true";
 }
 
 bool API::wallLeft() {
     std::cout << "wallLeft" << std::endl;
     std::string response;
     std::cin >> response;
-    return (response == "true");
+    return response == "true";
+}
+
+bool API::wallBack() {
+    std::cout << "wallBack" << std::endl;
+    std::string response;
+    std::cin >> response;
+    return response == "true";
 }
 
 void API::moveForward(int distance) {
     std::cout << "moveForward " << distance << std::endl;
     std::string response;
     std::cin >> response;
-    if (response == "crash") {
-        std::cerr << "CRITICAL: mouse crashed!!!!!!" << std::endl;
-        // logic to handle reset or stop?
+    if (response!= "ack") {
+        std::cerr << "Error: moveForward crash" << std::endl;
+        throw std::runtime_error("Crashed");
+    }
+}
+
+void API::moveForwardHalf(int distance) {
+    std::cout << "moveForwardHalf " << distance << std::endl;
+    std::string response;
+    std::cin >> response;
+    if (response!= "ack") {
+        std::cerr << "Error: moveForwardHalf crash" << std::endl;
+        throw std::runtime_error("Crashed");
     }
 }
 
@@ -89,6 +101,10 @@ void API::clearColor(int x, int y) {
     std::cout << "clearColor " << x << " " << y << std::endl;
 }
 
+void API::clearAllColor() {
+    std::cout << "clearAllColor" << std::endl;
+}
+
 void API::setText(int x, int y, const std::string& text) {
     std::cout << "setText " << x << " " << y << " " << text << std::endl;
 }
@@ -97,11 +113,15 @@ void API::clearText(int x, int y) {
     std::cout << "clearText " << x << " " << y << std::endl;
 }
 
+void API::clearAllText() {
+    std::cout << "clearAllText" << std::endl;
+}
+
 bool API::wasReset() {
     std::cout << "wasReset" << std::endl;
     std::string response;
     std::cin >> response;
-    return (response == "true");
+    return response == "true";
 }
 
 void API::ackReset() {

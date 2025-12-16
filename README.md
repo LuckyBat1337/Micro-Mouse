@@ -36,7 +36,7 @@ Standard for how the code should look is as follows:
 
 Keep everything in English to avoid confusion.
 
-"#ifndef", "#define", "#endif" is the same as the typical "#pragma once", but since "#pragma once" is not actual standard it should be avoided.
+"#ifndef", "#define", "#endif" is the same as the typical "#pragma once", use whichever you want.
 
 For good practice no namespace will be used unless it is a local namespace created internally for the project.
 

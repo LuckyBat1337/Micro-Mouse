@@ -20,7 +20,7 @@ Information below taken from the internet:
 "-o micromouse: Names the resulting binary:"
 "-DSIMULATOR_MODE: This is the equivalent of writing #define SIMULATOR_MODE at the top of every file. It activates the simulation blocks in API.h and API.cpp and ensures Arduino.h is ignored."
 
-build command: g++ Main.cpp API.cpp -o micromouse.exe -DSIMULATOR_MODE
+build command: g++ Main.cpp API.cpp move.cpp Motors.cpp -o micromouse.exe -DSIMULATOR_MODE
 
 
 

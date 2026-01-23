@@ -1,131 +1,117 @@
-/*
-  API.cpp is where we should have a implementation of the API interface. (maybe? ZZ)
-  
-  IMPORTANT NOTE!!!!!!!! OBS!!!!!
-  This file contains two completely separate implementations.
-  The preprocessor directives (#ifdef SIMULATOR_MODE, row 14 right now dont forget to change what row im refering to end of project ZZ ) 
-  determine which block of code is compiled. This allows the same source files to run on the desktop simulator and the physical ESP32.
- */
-#include "API.h"
-#include <iostream>
-#include <string>
-#include <cstdlib>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int API::mazeWidth() {
-    std::cout << "mazeWidth" << std::endl;
-    std::string response;
-    std::cin >> response;
-    return std::stoi(response);
+#define BUFFER_SIZE 32
+
+int getInteger(const char* command) {
+    printf("%s\n", command);
+    fflush(stdout);
+    char response[BUFFER_SIZE];
+    fgets(response, BUFFER_SIZE, stdin);
+    int value = atoi(response);
+    return value;
 }
 
-int API::mazeHeight() {
-    std::cout << "mazeHeight" << std::endl;
-    std::string response;
-    std::cin >> response;
-    return std::stoi(response);
+int getBoolean(const char* command) {
+    printf("%s\n", command);
+    fflush(stdout);
+    char response[BUFFER_SIZE];
+    fgets(response, BUFFER_SIZE, stdin);
+    int value = (strcmp(response, "true\n") == 0);
+    return value;
 }
 
-bool API::wallFront() {
-    std::cout << "wallFront" << std::endl;
-    std::string response;
-    std::cin >> response;
-    return response == "true";
+int getAck(const char* command) {
+    printf("%s\n", command);
+    fflush(stdout);
+    char response[BUFFER_SIZE];
+    fgets(response, BUFFER_SIZE, stdin);
+    int success = (strcmp(response, "ack\n") == 0);
+    return success;
 }
 
-bool API::wallRight() {
-    std::cout << "wallRight" << std::endl;
-    std::string response;
-    std::cin >> response;
-    return response == "true";
+int API_mazeWidth() {
+    return getInteger("mazeWidth");
 }
 
-bool API::wallLeft() {
-    std::cout << "wallLeft" << std::endl;
-    std::string response;
-    std::cin >> response;
-    return response == "true";
+int API_mazeHeight() {
+    return getInteger("mazeHeight");
 }
 
-bool API::wallBack() {
-    std::cout << "wallBack" << std::endl;
-    std::string response;
-    std::cin >> response;
-    return response == "true";
+int API_wallFront() {
+    return getBoolean("wallFront");
 }
 
-void API::moveForward(int distance) {
-    std::cout << "moveForward " << distance << std::endl;
-    std::string response;
-    std::cin >> response;
-    if (response!= "ack") {
-        std::cerr << "Error: moveForward crash" << std::endl;
-        throw std::runtime_error("Crashed");
-    }
+int API_wallRight() {
+    return getBoolean("wallRight");
 }
 
-void API::moveForwardHalf(int distance) {
-    std::cout << "moveForwardHalf " << distance << std::endl;
-    std::string response;
-    std::cin >> response;
-    if (response!= "ack") {
-        std::cerr << "Error: moveForwardHalf crash" << std::endl;
-        throw std::runtime_error("Crashed");
-    }
+int API_wallLeft() {
+    return getBoolean("wallLeft");
 }
 
-void API::turnRight() {
-    std::cout << "turnRight" << std::endl;
-    std::string response;
-    std::cin >> response;
+int API_moveForward() {
+    return getAck("moveForward");
 }
 
-void API::turnLeft() {
-    std::cout << "turnLeft" << std::endl;
-    std::string response;
-    std::cin >> response;
+void API_turnRight() {
+    getAck("turnRight");
 }
 
-void API::setWall(int x, int y, char direction) {
-    std::cout << "setWall " << x << " " << y << " " << direction << std::endl;
+void API_turnLeft() {
+    getAck("turnLeft");
 }
 
-void API::clearWall(int x, int y, char direction) {
-    std::cout << "clearWall " << x << " " << y << " " << direction << std::endl;
+void API_setWall(int x, int y, char direction) {
+    printf("setWall %d %d %c\n", x, y, direction);
+    fflush(stdout);
 }
 
-void API::setColor(int x, int y, char color) {
-    std::cout << "setColor " << x << " " << y << " " << color << std::endl;
+void API_clearWall(int x, int y, char direction) {
+    printf("clearWall %d %d %c\n", x, y, direction);
+    fflush(stdout);
 }
 
-void API::clearColor(int x, int y) {
-    std::cout << "clearColor " << x << " " << y << std::endl;
+void API_setColor(int x, int y, char color) {
+    printf("setColor %d %d %c\n", x, y, color);
+    fflush(stdout);
 }
 
-void API::clearAllColor() {
-    std::cout << "clearAllColor" << std::endl;
+void API_clearColor(int x, int y) {
+    printf("clearColor %d %d\n", x, y);
+    fflush(stdout);
 }
 
-void API::setText(int x, int y, const std::string& text) {
-    std::cout << "setText " << x << " " << y << " " << text << std::endl;
+void API_clearAllColor() {
+    printf("clearAllColor\n");
+    fflush(stdout);
 }
 
-void API::clearText(int x, int y) {
-    std::cout << "clearText " << x << " " << y << std::endl;
+void API_setText(int x, int y, char* text) {
+    printf("setText %d %d %s\n", x, y, text);
+    fflush(stdout);
 }
 
-void API::clearAllText() {
-    std::cout << "clearAllText" << std::endl;
+void API_clearText(int x, int y) {
+    printf("clearText %d %d\n", x, y);
+    fflush(stdout);
 }
 
-bool API::wasReset() {
-    std::cout << "wasReset" << std::endl;
-    std::string response;
-    std::cin >> response;
-    return response == "true";
+void API_clearAllText() {
+    printf("clearAllText\n");
+    fflush(stdout);
 }
 
-void API::ackReset() {
-    std::cout << "ackReset" << std::endl;
-    std::string response;
-    std::cin >> response;
+int API_wasReset() {
+    return getBoolean("wasReset");
+}
+
+void API_ackReset() {
+    getAck("ackReset");
+}
+
+void debug_log(char* text) {
+    fprintf(stderr, "%s\n", text);
+    fflush(stderr);
 }

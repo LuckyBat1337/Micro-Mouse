@@ -1,33 +1,42 @@
 #pragma once
-#include <string>
 
-class API {
-public:
-    static int mazeWidth();
-    static int mazeHeight();
+int API_mazeWidth();
+int API_mazeHeight();
 
-    static bool wallFront();
-    static bool wallRight();
-    static bool wallLeft();
-    static bool wallBack();
+int API_wallFront();
+int API_wallRight();
+int API_wallLeft();
 
-    static void moveForward(int distance = 1);
-    static void moveForwardHalf(int distance = 1);
+int API_moveForward();  // Returns 0 if crash, else returns 1
+void API_turnRight();
+void API_turnLeft();
 
-    static void turnRight();
-    static void turnLeft();
+void API_setWall(int x, int y, char direction);
+void API_clearWall(int x, int y, char direction);
 
-    static void setWall(int x, int y, char direction);
-    static void clearWall(int x, int y, char direction);
+void API_setColor(int x, int y, char color);
+void API_clearColor(int x, int y);
+void API_clearAllColor();
 
-    static void setColor(int x, int y, char color);
-    static void clearColor(int x, int y);
-    static void clearAllColor();
+void API_setText(int x, int y, char* str);
+void API_clearText(int x, int y);
+void API_clearAllText();
 
-    static void setText(int x, int y, const std::string& text);
-    static void clearText(int x, int y);
-    static void clearAllText();
+int API_wasReset();
+void API_ackReset();
 
-    static bool wasReset();
-    static void ackReset();
-};
+void debug_log(char* text)
+
+#pragma once
+
+#ifndef SOLVER_H
+#define SOLVER_H
+
+typedef enum Heading { NORTH, EAST, SOUTH, WEST } Heading;
+typedef enum Action { LEFT, FORWARD, RIGHT, IDLE } Action;
+
+Action solver();
+Action leftWallFollower();
+Action floodFill();
+
+#endif
